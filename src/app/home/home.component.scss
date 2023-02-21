@@ -1,0 +1,364 @@
+
+$c1: #6C00FF;
+$c2: #2166f0;
+$c3: #2DCDDF;
+$c4: #F2DEBA;
+
+$c1: #C0D8C0;
+$c2: #F5EEDC;
+$c3: #DD4A48;
+$c4: #ECB390;
+
+// $c1: #EA047E;
+// $c2: #FF6D28;
+// $c3: #FCE700;
+// $c4: #00F5FF;
+
+// $c1: #B7C4CF;
+// $c2: #EEE3CB;
+// $c3: #D7C0AE;
+// $c4: #967E76;
+
+// $c1: #4542e4;
+// $c2: #F637EC;
+// $c3: #FBB454;
+// $c4: #FAEA48;
+
+$low-transition-time: 0.5s;
+$standard-transition-time: 1s;
+$high-transition-time: 1.5s;
+
+
+.outer {
+    overflow: hidden;
+}
+
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.option {
+
+    height: 100vh;
+    transition: all $standard-transition-time;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: flex-start;
+
+    overflow: hidden;
+
+    z-index: 10;
+
+    width: 0;
+
+    color: #1F1F1F;
+
+    .column {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100vh;
+
+        transition: inherit;
+    }
+
+    .col-right {
+        // display: none;
+        // transition: all 2s 1s;
+        transition: width $standard-transition-time, transform $standard-transition-time, opacity $low-transition-time;
+        transform: translateX(80%);
+        height: 100vh;
+        width: 0%;
+        opacity: 0;
+        text-align: left;
+        overflow: hidden;
+
+        .col-inner {
+            font-size: 1.4em;
+            font-weight: lighter;
+            padding: 2em;
+            // min-width: 55vw;
+            max-width: calc(47.5vw - 4em);
+            min-width: calc(47.5vw - 4em);
+
+            .section {
+                
+                .subtitle {
+                    font-size: 1.5em;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    opacity: 0.4;
+                }
+                
+                .desc {
+                    font-size: 1em;
+                    font-weight: bold;
+                }
+            }
+
+        }
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .title {
+
+        user-select: none;
+        cursor: default;
+        position: relative;
+        writing-mode: vertical-lr;
+        rotate: -180deg;
+        padding: 0.4em 0.1em;
+        font-size: 6em;
+        font-weight: 900;
+
+        max-height: 100vh;
+        text-align:end;
+
+        transition: all 0.8s;
+    }
+
+    .content {
+
+        margin: 1.2em 0em;
+        text-align: left;
+
+        width: 100%;
+        
+        font-size: 2em;
+        font-weight: bolder;
+        
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .title-ext {
+            opacity: 0;
+            transition: all 0.3s 0s;
+            max-width: 18vw;
+        }
+
+        .desc {
+            opacity: 0;
+            transition: all 0.2s;
+            font-weight: bolder;
+            text-transform: lowercase;
+            font-size: 2em;
+
+            width: 100%;
+
+            .section {
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                .big-box {
+                    min-width: 20vw;
+                }
+
+                .hobbys {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0;
+                    align-items: center;
+
+                    padding: 0.4em;
+                    padding-left: 0;
+                    
+
+                    .icon-row {
+                        display: flex;
+                        flex-direction: row;
+                    }
+
+                }
+            }
+
+            .icon {
+                font-size: 0.5em;
+                background-color: rgba(0, 0, 0, 0.464);
+                color: rgba(245, 245, 245, 0.722);
+                margin: 0.2em;
+                padding: 0.35em;
+                border-radius: 32%;
+
+            }
+        }
+    }
+
+    @keyframes up-down {
+        0% {  transform: translate(0%, 0%) }
+        50% { transform: translate(0%, -20%) }
+        100% { transform: translate(0%, 0%) }
+    }
+
+    .toggle-expand {
+
+        font-weight: bold;
+        color: inherit;
+        margin-right: 1em;
+        margin-left: auto;
+        opacity: 0;
+
+        transition: opacity 0.3s, transform 0.3s;
+
+        .toggle-icon {
+            transition: opacity 0.5s;
+            opacity: 0.2;
+
+            &:hover {
+                transition: opacity 0.5s;
+                cursor: pointer;
+                transform: scale(1.25);
+                opacity: 1;
+            }
+
+        }
+    }
+
+    &:hover {
+
+        flex: 3;
+        cursor: pointer;
+
+        // opacity-transition, of title, when option-hover starts
+        .title {
+            opacity: 0.12;
+        }
+
+        .content {
+
+            // opacity-transition, of title-ext, when option-hover starts
+            .title-ext {
+                transition: opacity $standard-transition-time 0.3s;
+                opacity: 0.12;
+            }
+
+            // opacity-transition, of desc, when option-hover starts
+            .desc {
+                transition: opacity $standard-transition-time 0.8s;
+                opacity: 1;
+
+                $animation-duration: 2s;
+
+                .i-1 {
+                    // transform: translate(-10%, -10%) rotate(10deg) ;
+
+                    animation: up-down calc($animation-duration + 0.3s) ease-in-out 0s infinite;
+                }
+
+                .i-2 {
+                    // transform: translate(-10%, -10%) rotate(-15deg) ;
+                    animation: up-down calc($animation-duration + 0.6s) ease-in-out 0s infinite;
+                }
+
+                .i-3 {
+                    // transform: translate(-20%, 10%) rotate(-5deg) ;
+                    animation: up-down calc($animation-duration + 0s) ease-in-out 0s infinite;
+                }
+
+                .i-4 {
+                    // transform: translate(-20%, 10%) rotate(10deg) ;
+                    animation: up-down calc($animation-duration + 0.9s) ease-in-out 0s infinite;
+                }
+
+                .i-5 {
+                    // transform: translate(-20%, 10%) rotate(10deg) ;
+                    animation: up-down calc($animation-duration + 1.2s) ease-in-out 0s infinite;
+                }
+            }
+
+        }
+
+        // opacity-transition, of toggle-expand div, when hover starts
+        .toggle-expand {
+            transition: all $standard-transition-time $standard-transition-time;
+            opacity: 1;
+
+        }
+    }
+
+    &.hide {
+
+        transition: flex $standard-transition-time;
+        flex: 0;
+
+        .title {
+            transition: opacity 0.5s;
+            opacity: 0;
+        }
+
+        .content {
+            transition: opacity 0.5s;
+            opacity: 0;
+        }
+    }
+
+    &.expanded {
+
+        .col-left {
+            width: 50%;
+            min-width: 50%;
+
+            .content {
+                width: 100%;
+
+                .row {
+                    width: 100%;
+                }
+            }
+        }
+
+        .col-right {
+
+            transition: width $standard-transition-time, transform $standard-transition-time $low-transition-time ease-out, opacity $standard-transition-time $low-transition-time ease-out;
+            width: 50%;
+            height: 100vh;
+            opacity: 1;
+            transform: translateY(0%);
+
+            .col-inner {
+                // min-width: 20vw;
+                max-width: calc(47.5vw - 4em);
+                min-width: calc(47.5vw - 4em);
+            }
+        }
+
+        .toggle-icon {
+            transform: rotate(45deg);
+
+            &:hover {
+                transform: rotate(45deg) scale(1.25) !important;
+            }
+        }
+    }
+
+}
+
+.o-1 {
+    background-color: $c1;
+}
+
+.o-2 {
+    background-color: $c2;
+}
+
+.o-3 {
+    background-color: $c3;
+}
+
+.o-4 {
+    background-color: $c4;
+}

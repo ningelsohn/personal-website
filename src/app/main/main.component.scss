@@ -1,0 +1,28 @@
+.outer {
+
+    .inner {
+
+        .flex {
+
+            display: flex;
+
+            .content {
+
+                flex: 19;
+            }
+
+            .nav {
+
+                z-index: 20;
+
+                flex: 1;
+                transition: all 1.2s;
+                background-color: black;
+
+                &:hover {
+                    flex: 19;
+                }
+            }
+        }
+    }
+}
