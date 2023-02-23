@@ -9,25 +9,35 @@ $c2: #F5EEDC;
 $c3: #DD4A48;
 $c4: #ECB390;
 
-// $c1: #EA047E;
-// $c2: #FF6D28;
-// $c3: #FCE700;
-// $c4: #00F5FF;
+$c1: #EA047E;
+$c2: #FF6D28;
+$c3: #FCE700;
+$c4: #00F5FF;
 
-// $c1: #B7C4CF;
-// $c2: #EEE3CB;
-// $c3: #D7C0AE;
-// $c4: #967E76;
+$c1: #B7C4CF;
+$c2: #EEE3CB;
+$c3: #D7C0AE;
+$c4: #967E76;
 
-// $c1: #4542e4;
-// $c2: #F637EC;
-// $c3: #FBB454;
-// $c4: #FAEA48;
+$c1: #4542e4;
+$c2: #F637EC;
+$c3: #FBB454;
+$c4: #FAEA48;
+
+$c1: #F6E6CB;
+$c2: #E7D4B5;
+$c3: #A0937D;
+$c4: #FBB454;
 
 $low-transition-time: 0.5s;
 $standard-transition-time: 1s;
 $high-transition-time: 1.5s;
 
+.select-option {
+     &:hover {
+        color: whitesmoke;
+     }
+}
 
 .outer {
     overflow: hidden;
@@ -58,7 +68,7 @@ $high-transition-time: 1.5s;
 
     width: 0;
 
-    color: #1F1F1F;
+    color: #2c2c2c;
 
     .column {
         display: flex;
@@ -70,8 +80,6 @@ $high-transition-time: 1.5s;
     }
 
     .col-right {
-        // display: none;
-        // transition: all 2s 1s;
         transition: width $standard-transition-time, transform $standard-transition-time, opacity $low-transition-time;
         transform: translateX(80%);
         height: 100vh;
@@ -86,6 +94,7 @@ $high-transition-time: 1.5s;
             padding: 2em;
             // min-width: 55vw;
             max-width: calc(47.5vw - 4em);
+            // width: calc(47.5vw - 4em);
             min-width: calc(47.5vw - 4em);
 
             .section {
@@ -134,6 +143,7 @@ $high-transition-time: 1.5s;
         text-align: left;
 
         width: 100%;
+        min-width: calc(47.5vw - 4em);
         
         font-size: 2em;
         font-weight: bolder;
@@ -150,10 +160,13 @@ $high-transition-time: 1.5s;
 
         .desc {
             opacity: 0;
+            filter: blur(1px);
             transition: all 0.2s;
             font-weight: bolder;
             text-transform: lowercase;
             font-size: 2em;
+
+            transition: all $low-transition-time;
 
             width: 100%;
 
@@ -188,8 +201,8 @@ $high-transition-time: 1.5s;
 
             .icon {
                 font-size: 0.5em;
-                background-color: rgba(0, 0, 0, 0.464);
-                color: rgba(245, 245, 245, 0.722);
+                background-color: rgba(0, 0, 0, 0.25);
+                color: whitesmoke;
                 margin: 0.2em;
                 padding: 0.35em;
                 border-radius: 32%;
@@ -200,8 +213,9 @@ $high-transition-time: 1.5s;
 
     @keyframes up-down {
         0% {  transform: translate(0%, 0%) }
-        50% { transform: translate(0%, -20%) }
-        100% { transform: translate(0%, 0%) }
+        10% { transform: translate(0%, -20%) }
+        20% { transform: translate(0%, 0%) }
+        100% { transform: translate(0) }
     }
 
     .toggle-expand {
@@ -248,35 +262,40 @@ $high-transition-time: 1.5s;
 
             // opacity-transition, of desc, when option-hover starts
             .desc {
-                transition: opacity $standard-transition-time 0.8s;
+                transition: all $standard-transition-time 0.6s;
                 opacity: 1;
+                filter: blur(0px);
 
-                $animation-duration: 2s;
+                $animation-duration: 3s;
 
                 .i-1 {
                     // transform: translate(-10%, -10%) rotate(10deg) ;
-
-                    animation: up-down calc($animation-duration + 0.3s) ease-in-out 0s infinite;
+                    // translate: 0 -15px;
+                    animation: up-down $animation-duration ease-in-out 0s infinite;
                 }
 
                 .i-2 {
                     // transform: translate(-10%, -10%) rotate(-15deg) ;
-                    animation: up-down calc($animation-duration + 0.6s) ease-in-out 0s infinite;
+                    // translate: 0 -10px;
+                    animation: up-down $animation-duration ease-in-out calc($animation-duration * (1/20)) infinite;
                 }
 
                 .i-3 {
                     // transform: translate(-20%, 10%) rotate(-5deg) ;
-                    animation: up-down calc($animation-duration + 0s) ease-in-out 0s infinite;
+                    // translate: 0 -5px;
+                    animation: up-down calc($animation-duration) ease-in-out calc($animation-duration * (2/20)) infinite;
                 }
 
                 .i-4 {
                     // transform: translate(-20%, 10%) rotate(10deg) ;
-                    animation: up-down calc($animation-duration + 0.9s) ease-in-out 0s infinite;
+                    // translate: 0 0px;
+                    animation: up-down calc($animation-duration) ease-in-out calc($animation-duration * (3/20)) infinite;
                 }
 
                 .i-5 {
                     // transform: translate(-20%, 10%) rotate(10deg) ;
-                    animation: up-down calc($animation-duration + 1.2s) ease-in-out 0s infinite;
+                    // translate: 0 5px;
+                    animation: up-down calc($animation-duration) ease-in-out calc($animation-duration * (4/20)) infinite;
                 }
             }
 
@@ -323,7 +342,7 @@ $high-transition-time: 1.5s;
 
         .col-right {
 
-            transition: width $standard-transition-time, transform $standard-transition-time $low-transition-time ease-out, opacity $standard-transition-time $low-transition-time ease-out;
+            transition: width $standard-transition-time, transform $standard-transition-time 0.3s ease-out, opacity 2s $low-transition-time;
             width: 50%;
             height: 100vh;
             opacity: 1;
