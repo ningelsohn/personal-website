@@ -213,9 +213,10 @@ $high-transition-time: 1.5s;
 
     @keyframes up-down {
         0% {  transform: translate(0%, 0%) }
-        10% { transform: translate(0%, -20%) }
-        20% { transform: translate(0%, 0%) }
-        100% { transform: translate(0) }
+        40% { transform: translate(0%, 0%) }
+        50% { transform: translate(0%, -20%) }
+        60% { transform: translate(0%, 0%) }
+        100% { transform: translate(0%, 0%) }
     }
 
     .toggle-expand {
