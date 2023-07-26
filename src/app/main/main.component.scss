@@ -1,26 +1,72 @@
+@use "src/styles/sizes" as *;
+
 .outer {
+    display: flex;
+    height: 90%;
+    max-height: 90%;
+    height: -webkit-fill-available;
+    max-height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
 
-    .inner {
+    .flex {
+        flex-grow: 1;
+        overflow: hidden;
+    
+        display: flex;
+        flex-direction: column;
 
-        .flex {
+        transition: all 0.8s;
 
-            display: flex;
+        .content {
+            flex: 9;
+            transition: all 0.8s;
+            height: calc(100% * ($mobile-content-size / $mobile-size-sum));
+            max-height: calc(100% * ($mobile-content-size / $mobile-size-sum));
+        }
+        
+        .nav {
+            flex: 1;
+        
+            transition: all 0.8s;
+        }
+
+        // mobile version handles nav behhavior with on-click function and this class, desktop uses hover-events
+        &.navOpen {
 
             .content {
-
-                flex: 19;
+                height: 45vh;
+                max-height: 45vh;
             }
 
             .nav {
+                // flex: 11;
+                height: 55vh;
+                max-height: 55vh;
+            }
+        }
+    }
+}
 
-                z-index: 20;
+@media (min-width: 1200px) {
 
-                flex: 1;
-                transition: all 1.2s;
-                background-color: black;
+    .outer {
+        .flex {
+            flex-direction: row;
 
+            .content {
+                flex: $desktop-content-size;
+
+                // set height (mobile content height is less because of navbar at the bottom, here navbar is at the right side)
+                height: 100vh;
+                max-height: 100vh;
+            }
+            
+            .nav {
+                flex: $desktop-nav-size;
+            
+                // unfold navbar on hover
                 &:hover {
-                    flex: 19;
+                    flex: $desktop-content-size;
                 }
             }
         }

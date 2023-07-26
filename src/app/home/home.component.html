@@ -1,247 +1,206 @@
 <div class="outer">
     <div class="flex">
-        <div class="option o-1" #option1 (click)="onToggleExpand(option1)">
 
-            <!-- COLUMN LEFT -->
-            <div class="column col-left">
-                <div class="title">ABOUT ME</div>
-                <div class="content">
-                    <div class="row">
-                        <div class="title-ext">AND MY CAT</div>
-                        <div class="toggle-expand">
-                            <i class="fas fa-circle-plus toggle-icon"></i>
-                        </div>
+        <div class="btns" [class.hidden] = "btnsHidden">
+            <!-- Hide up-button when option would be out of bounds or buttons are hidden completely -->
+            <div class="btn icon" [class.hidden] = "btnsHidden || !((curr - 1) >= 0 && (curr - 1) < divList.length)" (click)="onSwitch(-1, $event)">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+            <!-- Hide down-button when option would be out of bounds or button are hidden completely -->
+            <div class="btn icon" [class.hidden] = "btnsHidden || !((curr + 1) >= 0 && (curr + 1) < divList.length)" (click)="onSwitch(+1, $event)">
+                <i class="fa-solid fa-arrow-down"></i>
+            </div>
+        </div>
+
+        <!-- OPTION: ABOUT ME -->
+        <div class="option o-1" #option1 (click)="onToggleExpand(option1)">
+            <div class="option-inner">
+
+                <!-- COLUMN LEFT -->
+                <div class="column col-left">
+                    <div class="title">ABOUT ME</div>
+                    <div class="expand-toggle">
+                        <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="desc">
-                        <div class="section">
-                            <div class="big-box">
-                                <div class="intro">hi! i'm&nbsp;jan.</div>
-                                <div class="intro">i like doing stuff.</div>
-                            </div>
-                            <div class="box">
-                                <div class="hobbys">
-                                    <div class="icon-row">
-                                        <span class="icon i-1">
-                                            <i class="fa-solid fa-laptop-code fa-fw"></i>
-                                        </span>
-                                        <span class="icon i-2">
-                                            <i class="fa-solid fa-person-biking fa-fw"></i>
-                                        </span>
-                                        <span class="icon i-3">
-                                            <i class="fa-solid fa-basketball fa-fw"></i>
-                                        </span>
-                                        <span class="icon i-4">
-                                            <i class="fa-solid fa-chess fa-fw"></i>
-                                        </span>
-                                        <span class="icon i-5">
-                                            <i class="fa-solid fa-gamepad fa-fw"></i>
-                                        </span>
-                                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <div class="title-ext">ABOUT ME <br> MYSELF AND I</div>
+                        </div>
+                        <div class="desc">
+                            <div class="section">
+                                <div class="big-box">
+                                    <div class="intro">hi! i'm&nbsp;jan.</div>
+                                    <div class="intro">i like doing stuff. <br> and&nbsp;i&nbsp;do stuff well.</div>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="info">Bikepacking, Basketball, Piano</div> -->
-                        <!-- <div class="info">Soon: Master studies in Lisbon, Portugal</div> -->
                     </div>
                 </div>
-            </div>
-            <!-- COLUMN LEFT -->
+                <!-- COLUMN LEFT -->
 
-            <!-- COLUMN RIGHT -->
-            <div class="column col-right">
-                <div class="col-inner">
-                    <div class="section">
-                        <div class="subtitle">past</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="subtitle">present</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="subtitle">future</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
+                <!-- COLUMN RIGHT -->
+                <div class="column col-right">
+                    <div class="col-inner">
+                        <div class="section">
+                            <div class="desc">     
+                                Before I found my way into computer science and eventually got my Bachelor of Science, I first did a few side quests.
+                                <br><br>
+                                Once there, I enjoy developing modern web applications. For private projects, I also like to get creative.
+                                <br><br>
+                                During my two years of work on an e-learning system, I was able to build up extensive knowledge of Spring Boot and Angular.
+                                I am very open-minded towards new technologies and hope to continuously expand the scope of my interdisciplinary knowledge.
+                                <br><br>
+                                To compensate for the many hours spent in front of the computer screen, I prefer cycling and also enjoy taking multi-day trips with it. In an amateur capacity, I like to play basketball, squash and tennis.
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- COLUMN RIGHT -->
+                <!-- COLUMN RIGHT -->
 
+            </div>
+            
         </div>
         <!-- OPTION: ABOUT ME -->
 
         <!-- OPTION: PROJECTS -->
         <div class="option o-2" #option2 (click)="onToggleExpand(option2)">
+            <div class="option-inner">
 
-            <!-- COLUMN LEFT -->
-            <div class="column col-left">
-                <div class="title">PROJECTS</div>
-                <div class="content">
-                    <div class="row">
-                        <div class="title-ext">THAT I HAVE PROBABLY NEVER FINISHED</div>
-                        <div class="toggle-expand">
-                            <i class="fas fa-circle-plus toggle-icon"></i>
-                        </div>
+                <!-- COLUMN LEFT -->
+                <div class="column col-left">
+                    <div class="title">PROJECTS</div>
+                    <div class="expand-toggle">
+                        <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="desc">
-                        <div class="section">
-                            <div class="big-box">
-                                <div class="intro">Python 3D Raytracer</div>
-                            </div>
-                            <div class="box">
-                                <div class="hobbys">
-                                    <div class="icon-row">
-                                        <span class="icon i-1">
-                                            <i class="fa-brands fa-python fa-fw"></i>
-                                        </span>
-                                        <span class="icon i-3">
-                                            <i class="fa-brands fa-java fa-fw"></i>
-                                        </span>
-                                    </div>
-                                    <div class="row">
-                                        <span class="icon i-2">
-                                            <i class="fa-brands fa-square-js fa-fw"></i>
-                                        </span>
-                                        <span class="icon i-4">
-                                            <i class="fa-brands fa-angular fa-fw"></i>
-                                        </span>
+                    <div class="content">
+                        <div class="row">
+                            <div class="title-ext">PROJECTS <br> I ACTUALLY FINISHED</div>
+                        </div>
+                        <div class="desc">
+                            <div class="section">
+                                <div class="big-box">
+                                    <p class="intro">you're looking at it. <br> but there is more, and more is on the way!</p>
+                                    <br>
+                                    <div class="actions">
+                                        <div class="cta action"><a href="https://worksample.jan-ningelgen.de" target="_blank">work sample →</a></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div> 
-            <!-- COLUMN LEFT -->
+                </div> 
+                <!-- COLUMN LEFT -->
 
-            <!-- COLUMN RIGHT -->
-            <div class="column col-right">
-                <div class="col-inner">
-                    <div class="section">
-                        <div class="subtitle">python 3d raytracer</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="subtitle">angular website</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="subtitle">raspberry</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
+                <!-- COLUMN RIGHT -->
+                <div class="column col-right">
+                    <div class="col-inner">
+                        <div class="section">
+                            <div class="desc">
+                                You see, I'm a bit of a perfectionist, and I cringe at the thought of showing anything less than polished brilliance. 
+                                <br><br>
+                                While I'm swinging my coding-hammer, enjoy my innovative personal website and my work sample. Both of these Angular projects were implemented solely by me.
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> 
-            <!-- COLUMN RIGHT -->
-
+                <!-- COLUMN RIGHT -->
+            
+            </div>
         </div>
         <!-- OPTION: PROJECTS -->
 
         <!-- OPTION: HIRE ME -->
         <div class="option o-3" #option3 (click)="onToggleExpand(option3)">
-
-            <!-- COLUMN LEFT -->
-            <div class="column col-left">
-                <div class="title">HIRE ME</div>
-                <div class="content">
-                    <div class="row">
-                        <div class="title-ext">IF YOU WANT</div>
-                        <div class="toggle-expand">
-                            <i class="fas fa-circle-plus toggle-icon"></i>
-                        </div>
+            <div class="option-inner">
+                    
+                <!-- COLUMN LEFT -->
+                <div class="column col-left">
+                    <div class="title">WORK WITH ME</div>
+                    <div class="expand-toggle">
+                        <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="desc">
-                        <div class="section">
-                            <div class="big-box">
-                                <div class="intro">
-                                    <div class="">do you want to work with me?</div>
-                                    <div class="select-option yes">
-                                        <i class="fa-regular fa-square"></i>
-                                        yes
-                                    </div>
-                                    <div class="select-option no">
-                                        <i class="fa-regular fa-square"></i>
-                                        no
-                                    </div>
-                                    <div class="select-option maybe">
-                                        <i class="fa-regular fa-square"></i>
-                                        maybe
+                    <div class="content">
+                        <div class="row">
+                            <div class="title-ext">WORK WITH ME <br> IF YOU WANT</div>
+                        </div>
+                        <div class="desc">
+                            <div class="section">
+                                <div class="big-box">
+                                    <div class="intro">
+                                        <div class="">do you want to work with me?</div>
+                                        <div class="select-option yes" (click)="onClickOption($event);">
+                                            <i class="fa-regular fa-square"></i>
+                                            yes
+                                        </div>
+                                        <div class="select-option no" (click)="onClickOption($event);">
+                                            <i class="fa-regular fa-square"></i>
+                                            no
+                                        </div>
+                                        <div class="select-option maybe" (click)="onClickOption($event);">
+                                            <i class="fa-regular fa-square"></i>
+                                            maybe
+                                        </div>
+                                        <div class="select-option maybe" (click)="onClickOption($event);">
+                                            <i class="fa-regular fa-square"></i>
+                                            42
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- COLUMN LEFT -->
+                <!-- COLUMN LEFT -->
 
-            <!-- COLUMN RIGHT -->
-            <div class="column col-right">
-                <div class="col-inner">
-                    <div class="section">
-                        <div class="subtitle">past</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="subtitle">present</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="subtitle">future</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
+                <!-- COLUMN RIGHT -->
+                <div class="column col-right" #mobileScrollTargetFakeSurvey>
+                    <div class="col-inner">
+                        <div class="section">
+                            <div class="desc">
+                                Okay, I admit it. The selection is a dummy. <br><br>
+
+                                Are you in need of a full stack developer and like my work?
+                                Want to team up for the next hackathon?
+                                <br><br>
+                                During my studies, my work and personal projects I built up extensive knowledge with popular, modern (web) technologies:
+                                <br><br>
+                                Java / SpringBoot / Spring Cloud <br>
+                                Angular / Typescript <br>
+                                Python / Flask / PyTorch <br>
+                                Git / Jenkins / Atlassian <br>
+            
+                                <br><br>
+                                <a class="cta" (click)="onSwitch(+1, $event)">Get in touch</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- COLUMN RIGHT -->
+                <!-- COLUMN RIGHT -->
 
+            </div>
         </div>
         <!-- OPTION: HIRE ME -->
 
         <!-- OPTION: CONTACT ME -->
-        <div class="option o-4" #option4 (click)="onToggleExpand(option4)">
+        <div class="option o-4" #option4  (click)="onToggleExpand(option4)">
 
             <!-- COLUMN LEFT -->
             <div class="column col-left">
                 <div class="title">CATCH ME</div>
+                <div class="expand-toggle">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
                 <div class="content">
                     <div class="row">
-                        <div class="title-ext">IF YOU CAN</div>
-                        <div class="toggle-expand">
-                            <i class="fas fa-circle-plus toggle-icon"></i>
-                        </div>
+                        <div class="title-ext">CATCH ME <br> IF YOU CAN</div>
                     </div>
                     <div class="desc">
                         <div class="section">
                             <div class="box">
-                                <div class="info">email me</div>
-                                <div class="info">github me</div>
-                                <div class="info">linkedin me</div>
-                                <div class="info">instagram me</div>
+                                <div class="info no-style-link" (click)="onClickHrefStopPropagation($event)"><a href="mailto:hello@jan-ningelgen.de" target="_blank">via mail</a></div>
+                                <div class="info no-style-link" (click)="onClickHrefStopPropagation($event)"><a href="https://github.com/ningelsohn" target="_blank">on github</a></div>
+                                <div class="info no-style-link" (click)="onClickHrefStopPropagation($event)"><a href="https://github.com/ningelsohn" target="_blank">on linkedin</a></div>
+                                <!-- <div class="info">on instagram</div> -->
                             </div>
                         </div>
                     </div>
@@ -253,24 +212,9 @@
             <div class="column col-right">
                 <div class="col-inner">
                     <div class="section">
-                        <div class="subtitle">past</div>
                         <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="subtitle">present</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="subtitle">future</div>
-                        <div class="desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem similique facilis quia vel expedita dolor repellat impedit a possimus quisquam, et saepe itaque doloribus animi voluptate vitae sit delectus deserunt?
+                            hello@jan-ningelgen.de <br><br>
+                            github.com/ningelsohn
                         </div>
                     </div>
                 </div>

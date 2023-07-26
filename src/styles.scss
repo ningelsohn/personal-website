@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@fortawesome/fontawesome-free/css/fontawesome.min.css";
+@import "~@fortawesome/fontawesome-free/css/solid.min.css";
+@import "~@fortawesome/fontawesome-free/css/regular.min.css";
 
 * {
     margin: 0;
@@ -8,7 +11,41 @@
     text-decoration: none;
 }
 
+html, body {
+    height: -webkit-fill-available;
+}
+
+body {
+    // disable scrolling
+    overflow: hidden;
+    height: 100vh;
+    height: -webkit-fill-available;
+    max-height: -webkit-fill-available;
+}
+
 div {
     // cursor: default;
     user-select: none;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+:root {
+    --base-color: #2c2c2c;
+    --theme-color-1: #B7C4CF;
+    --theme-color-2: #EEE3CB;
+    --theme-color-3: #D7C0AE;
+    --theme-color-4: #967E76;
+}
+
+$c1: var(--theme-color-1);
+$c2: var(--theme-color-2);
+$c3: var(--theme-color-3);
+$c4: var(--theme-color-4);

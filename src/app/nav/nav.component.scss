@@ -1,0 +1,230 @@
+$c1: var(--theme-color-1);
+$c2: var(--theme-color-2);
+$c3: var(--theme-color-3);
+$c4: var(--theme-color-4);
+
+// ##### MOBILE FIRST ######
+.outer {
+    height: 100%;
+    width: 100%;
+
+    background-color: #222222;
+
+    display: flex;
+    flex-direction: column;
+
+    color: rgb(236, 227, 205);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .logo {
+
+        margin: 1.2em;
+
+        height: 2.5em;
+        width: 2.5em;
+
+        // background: url("/assets/logo.svg");
+        // background-repeat: no-repeat;
+        // background-size: 2.5em;
+
+        .bright {
+            fill: $c1;
+            transition: fill 0.5s ease-in-out;
+        }
+
+        .dark {
+            fill-opacity: 0.5;
+            fill: $c1;
+            transition: fill 0.5s ease-in-out;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.8em;
+        padding: 1em;
+        padding-top: 0;
+        padding-bottom: 5em;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+        opacity: 0;
+        transition: all 1s ease-in-out;
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        font-size: 0.9em;
+
+        .content-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        .location {
+            font-weight: 100;
+        }
+
+        .color-profiles {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            font-weight: 100;
+            
+            .profiles {
+                gap: 0.8em;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .profile {
+                $size: 40px;
+                display: flex;
+                flex-wrap: wrap;
+                width: $size; /* Adjust the size of the container as needed */
+                max-width: $size;
+                height: $size;
+                max-height: $size;
+                border-radius: 5px;
+                overflow: hidden;
+                border: solid #00000000 2px;
+
+                transition: border 0.5s;
+
+                &:hover {
+                    border: solid 2px whitesmoke;
+                }
+              }
+              
+              .profile > div {
+                // position: absolute;
+                // width: 50%; /* Each child square will take up half of the container's width and height */
+                // height: 50%;
+                width: 50%;
+                height: 50%;
+              }
+        }
+    }
+        
+    &.open {
+
+        .content {
+            opacity: 100;
+        }
+
+        .title {
+            .show-on-hover {
+                opacity: 100;
+            }
+
+            .firstname {
+                left: 0;
+            }
+
+            .surname {
+                transform: translateY(1em);
+            }
+        }
+
+        .hamburger-menu span:last-child {
+            margin-bottom: 0;
+        }
+        
+        .hamburger-menu span:nth-child(1) {
+            transform: translateY(4px) rotate(-45deg);
+        }
+        
+        .hamburger-menu span:nth-child(2) {
+            width: 100%;
+            transform: translateY(-4px) rotate(45deg);
+        }
+    }
+
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 30px;
+        height: 24px;
+        cursor: pointer;
+        align-self: flex-start;
+        margin-left: auto;
+        padding: 1.5em;
+        transition: all 2s;
+        gap: 0.1em;
+    }
+    
+    .hamburger-menu span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: rgb(227, 222, 222);
+        background-color: whitesmoke;
+        margin-bottom: 4px;
+        border-radius: 0.5px;
+        transition: all 0.6s;
+    }
+
+    .hamburger-menu span:nth-child(2) {
+        width: 80%;
+    }
+}
+
+// ##### DESKTOP SECOND ######
+@media (min-width: 1200px) {
+    .outer {
+
+        flex-direction: column;
+        overflow: hidden !important;
+
+        .logo {
+
+            margin: 1.5em;
+    
+            height: 4em;
+            width: 4em;
+    
+            // background: url("/assets/logo.svg");
+            // background-repeat: no-repeat;
+            background-size: 4em;
+        }
+
+        .content {
+
+            height: 100vh;
+            position: relative;
+
+            .content-inner {
+                position: absolute;
+                padding-left: 2em;
+                padding-right: 4em;
+
+                // box-sizing: border-box;
+                
+                width: 50vw;
+                min-width: 50vw;
+
+            }
+        }
+    
+        .hamburger-menu {
+            display: none;
+        }
+
+        &:hover {
+            .content {
+                opacity: 100;
+            }
+        }
+    }
+}

@@ -1,12 +1,10 @@
 <div class="outer">
-    <div class="inner">
-        <div class="flex">
-            <div class="content">
-                <router-outlet></router-outlet>
-            </div>
-            <div class="nav">
-                <app-nav></app-nav>
-            </div>
+    <div class="flex" [class.navOpen]="navOpen">
+        <div class="content">
+            <router-outlet (closeNav)="onCloseNav()"></router-outlet>
+        </div>
+        <div class="nav" (click)="onToggleNav()">
+            <app-nav [navOpen]="navOpen"></app-nav>
         </div>
     </div>
 </div>
