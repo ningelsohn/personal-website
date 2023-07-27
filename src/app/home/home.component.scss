@@ -151,6 +151,7 @@ $high-transition-time: 1.2s;
                 transform: translateY(80%);
                 opacity: 0;
                 text-align: left;
+                min-height: 90vh; // to make sure that scrollIntoView doesnt break the layout
     
                 .col-inner {
                     font-size: 1.4em;
@@ -271,6 +272,8 @@ $high-transition-time: 1.2s;
                                 font-size: 0.5em;
 
                                 display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
                                 gap: 0.5em;
 
                                 .action {
