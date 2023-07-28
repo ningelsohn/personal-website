@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Output, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -38,7 +38,6 @@ export class HomeComponent {
 
     // emit info to close nav if open
     this.closeNav.emit();
-    console.log("emitted");
 
     // set current section
     this.curr = this.divList.indexOf(div);
@@ -57,6 +56,7 @@ export class HomeComponent {
       }
     });
 
+    // toggle expand state, set visibilty of navigation buttons accordingly
     if (!expanded) {
       this.renderer.addClass(div, 'expanded');
       this.btnsHiddenTempValue = false;
@@ -85,7 +85,7 @@ export class HomeComponent {
 
     this.renderer.removeClass(this.divList[this.curr + dir], 'hidden');
     this.renderer.addClass(this.divList[this.curr + dir], 'expanded');
-    
+
     this.curr += dir;
 
     // reset scroll
@@ -95,12 +95,16 @@ export class HomeComponent {
   }
 
   onClickOption(event: Event) {
+    // On desktop, the click expands the view and lets the user see more info
+    // On mobile (in this application, screens narrower than 1200px get the mobile view), we need to scroll down on click to reveal the same info
     if (window.innerWidth < 1200) {
       event?.stopPropagation();
       this.mobileScrollTargetFakeSurvey.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
+  // prevents click from triggering multiple times
+  // used for buttons for example, which are located in a big clickable container
   onClickHrefStopPropagation(event: Event) {
     event?.stopPropagation();
   }

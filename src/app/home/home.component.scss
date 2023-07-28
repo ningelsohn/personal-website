@@ -1,41 +1,12 @@
 @use "src/styles/sizes" as *;
 
-// $c1: #C0D8C0;
-// $c2: #F5EEDC;
-// $c3: #DD4A48;
-// $c4: #ECB390;
-
-// $c1: #6C00FF;
-// $c2: #2166f0;
-// $c3: #2DCDDF;
-// $c4: #F2DEBA;
-
-// $c1: #EA047E;
-// $c2: #FF6D28;
-// $c3: #FCE700;
-// $c4: #00F5FF;
-
-// $c1: #4542e4;
-// $c2: #F637EC;
-// $c3: #FBB454;
-// $c4: #FAEA48;
-
-// $c4: #F6E6CB;
-// $c3: #E7D4B5;
-// $c2: #A0937D;
-// $c1: #FBB454;
-
-// $c1: #B7C4CF;
-// $c2: #EEE3CB;
-// $c3: #D7C0AE;
-// $c4: #967E76;
-
+// set colors, css variables get adjusted by ts and scss variables automatically adjust too
 $c1: var(--theme-color-1);
 $c2: var(--theme-color-2);
 $c3: var(--theme-color-3);
 $c4: var(--theme-color-4);
 
-
+// tansition times
 $low-transition-time: 0.4s;
 $standard-transition-time: 0.8s;
 $high-transition-time: 1.2s;
@@ -44,7 +15,7 @@ $high-transition-time: 1.2s;
 
     height: 100%; // take full height
 
-    font-size: 1.8vh;
+    font-size: 1.8vh; // base font size depends on view height
 
     .flex {
 
@@ -55,16 +26,18 @@ $high-transition-time: 1.2s;
 
         position: relative; // for absolute positioning of contained buttons
 
-        // switch buttons to switch to prev/next expanded section
+        // switch buttons expand prev/next section
         .btns { 
 
             position: absolute; // position absolute, to overlay all content
+
+            // bottom right corner
             bottom: 0;
             right: 0;
             left: auto;
             top: auto;
 
-            padding: 0em 0.5em;
+            padding: 0em 0.5em; // only horizontal padding
 
             z-index: 100; // on top of everything
 
@@ -73,21 +46,21 @@ $high-transition-time: 1.2s;
 
             cursor: pointer;
 
+            // animate everything
             transition: all $standard-transition-time;
 
-            &.hidden {
-                right: -50%; // fly out of vision when hidden
-            }
+            // &.hidden {
+            //     right: -30%; // fly out of vision when hidden
+            // }
             
             .btn {
                 
                 transition: inherit;
-                
-                padding: 0.2em 0em;
+                padding: 0.2em 0em; // btns themself only get vertical padding/spacing
                 
                 &.hidden {
                     opacity: 0;
-                    transform: translateX(100%);
+                    transform: translateX(150%);
                     pointer-events: none; // no click event when hidden
                 }
             }
@@ -117,15 +90,8 @@ $high-transition-time: 1.2s;
                 display: flex;
                 flex-direction: column;
 
-                // height: 100%;
-                // max-height: 100%;
-
-                // height: 20vh;
-                // max-height: 80vh; // 4/5 of display height (1/5 blocked for nav)
-
                 overflow-x: hidden;
                 overflow-y: hidden;
-                // box-sizing: border-box;
             }
     
             .column {
@@ -135,10 +101,11 @@ $high-transition-time: 1.2s;
 
                 padding: 2em;
                 min-width: calc((50vw * ($desktop-content-size / $desktop-size-sum)));
-                // max-height: 0vh; // take no space when collapsed
                 box-sizing: border-box;
     
                 transition: inherit;
+
+                pointer-events: none; // no links clickable when collapsed
 
                 .content {
                     width: 85vw;
@@ -156,11 +123,8 @@ $high-transition-time: 1.2s;
                 .col-inner {
                     font-size: 1.4em;
                     font-weight: lighter;
-                    // padding: 2em;
                     max-width: calc(100vw - 4em); // full width, taking padding into account
-                    min-width: calc(100vw - 4em); // same
-
-                    // overflow: hidden;
+                    min-width: calc(100vw - 4em); // full width, taking padding into account
     
                     .section {
                         
@@ -188,14 +152,16 @@ $high-transition-time: 1.2s;
             .title {
     
                 user-select: none;
-                cursor: default;
                 padding: 0.4em;
+
+                // big and thick font
                 font-size: 3em;
                 font-weight: 900;
     
+                // absolute positioning, takes up no space and can be easily animated out of view
                 position: absolute;
     
-                transition: all 0.8s;
+                transition: all $standard-transition-time;
             }
 
             .expand-toggle {
@@ -241,7 +207,6 @@ $high-transition-time: 1.2s;
                 .title-ext {
                     opacity: 0;
                     transition: all 0.3s 0s;
-                    // max-width: 18vw;
                 }
     
                 .desc {
@@ -254,12 +219,8 @@ $high-transition-time: 1.2s;
     
                     transition: all $low-transition-time;
     
-                    // width: 100%;
-    
                     .section {
                         max-width: 100%;
-                        // display: flex;
-                        // flex-direction: row;
                         justify-content: space-between;
                         flex-wrap: wrap;
     
@@ -269,7 +230,7 @@ $high-transition-time: 1.2s;
 
                             .actions {
 
-                                font-size: 0.5em;
+                                font-size: 0.4em;
 
                                 display: flex;
                                 flex-direction: column;
@@ -280,6 +241,26 @@ $high-transition-time: 1.2s;
                                     background-color: rgba(16, 16, 16, 0.16);
                                     padding: 0 0.8em;
                                     border-radius: 1em;
+                                }
+
+                                .double-action {
+
+                                    display: flex;
+                                    align-items: flex-start;
+                                    gap: 0.1em;
+
+                                    width: 80%;
+                                    // max-width: 700px;
+
+                                    .action-1 {
+                                        border-radius: 1.2em 0.1em 0.1em 1.2em;
+                                        flex: 10;
+                                    }
+
+                                    .action-2 {
+                                        border-radius: 0.1em 1.2em 1.2em 0.1em;
+                                        flex: 1;
+                                    }
                                 }
                             }
                         }
@@ -336,7 +317,9 @@ $high-transition-time: 1.2s;
                 flex: 3;
                 cursor: pointer;
 
-                // overflow-y: scroll; //TODO delete?
+                .column {
+                    pointer-events: all; // links clickable when expanded
+                }
 
                 .option-inner {
                     overflow-y: auto;
@@ -459,6 +442,8 @@ $high-transition-time: 1.2s;
                     height: 100vh; // full window height
                     max-height: 100vh;
 
+                    pointer-events: all; // on desktop all pointer events
+
                     box-sizing: border-box; // take padding into account when specifying height
         
                     transition: inherit;
@@ -570,6 +555,15 @@ $high-transition-time: 1.2s;
         
                             .big-box {
                                 min-width: 20vw;
+
+                                .actions {
+    
+                                    .action {
+                                        &:hover {
+                                            background-color: rgba(83, 83, 83, 0.152);
+                                        }
+                                    }
+                                }
                             }
         
                             .hobbys {
