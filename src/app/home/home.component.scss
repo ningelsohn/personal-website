@@ -563,6 +563,15 @@ $high-transition-time: 1.2s;
                                             background-color: rgba(83, 83, 83, 0.152);
                                         }
                                     }
+
+                                    .double-action {
+
+                                        display: flex;
+                                        align-items: flex-start;
+                                        gap: 0.1em;
+    
+                                        width: 65%;
+                                    }
                                 }
                             }
         
