@@ -49,9 +49,9 @@ $high-transition-time: 1.2s;
             // animate everything
             transition: all $standard-transition-time;
 
-            // &.hidden {
-            //     right: -30%; // fly out of vision when hidden
-            // }
+            &.hidden {
+                right: -30%; // fly out of vision when hidden
+            }
             
             .btn {
                 
@@ -60,7 +60,7 @@ $high-transition-time: 1.2s;
                 
                 &.hidden {
                     opacity: 0;
-                    transform: translateX(150%);
+                    transform: translateX(150%); // fly in / out of vision when btns already visible, but next/prev page index is out of bounds
                     pointer-events: none; // no click event when hidden
                 }
             }
@@ -466,20 +466,14 @@ $high-transition-time: 1.2s;
                     height: 100vh;
                     max-height: 100vh;
                     max-width: 35vw;
-                    opacity: 0;
+                    opacity: 0; // invisible while not expanded
                     text-align: left;
                     overflow: hidden;
 
+                    // slightly transparent overlay with rounded corners
                     background-color: #35230d0b;
-                    
-
-                    // border-radius: 10em;
                     border-top-left-radius: 6em;
                     border-bottom-left-radius: 6em;
-
-                    // border-left: 3px solid #6e6e6e;
-
-                    // overflow-y: scroll; //TODO delete?
         
                     .col-inner {
                         font-size: 1.4em;

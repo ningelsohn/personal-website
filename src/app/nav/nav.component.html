@@ -23,15 +23,14 @@
             </div>
             <div class="privacy">
                 <p class="cookies">
-                    This website does not use cookies and does not load content such as fonts from external sources. No trackers of any kind are used. 
+                    This website does not use cookies and does not load content such as fonts from external sources.
+                    No trackers of any kind are used. 
                 </p>
             </div>
             <div class="color-profiles">
                 Don't like the theme? Don't worry, I got you colored.
                 <div class="profiles">
                     <div class="profile" *ngFor="let profile of colorProfiles; let i = index" (click)="$event.stopPropagation(); onChangeColor(i)">
-                        <!-- <div [style.background-image]="'linear-gradient(to bottom right, ' + profile.themeColor1 + ', ' + profile.themeColor2 + ', ' + profile.themeColor3 + ', ' + profile.themeColor4 + ')'"></div> -->
-                          
                         <div class="top-left" [style.background-color]="profile.themeColor1"></div>
                         <div class="top-right" [style.background-color]="profile.themeColor2"></div>
                         <div class="bottom-left" [style.background-color]="profile.themeColor3"></div>
